@@ -1,7 +1,7 @@
 # News-Website-Project
 Hey guys, I built a News Website using HTML, CSS and Javascript
 
-The code you provided consists of an HTML file (index.html), a JavaScript file (script.js), and a CSS file (style.css). Here's an overview of what each file contains:
+The code consists of an HTML file (index.html), a JavaScript file (script.js), and a CSS file (style.css). Here's an overview of what each file contains:
 
 **index.html:**
 - The HTML file defines the structure of the web page.
