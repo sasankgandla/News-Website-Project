@@ -2,7 +2,7 @@ const API_KEY = "e215f75be2d54255b63d41fd482bad6f";
 const url = "https://newsapi.org/v2/everything?q=";
 
 // When the website loads this content should show
-window.addEventListener("load",()=>{
+window.addEventListener("load", () => {
     fetchNews("adipurush");
 })
 
@@ -26,14 +26,14 @@ function bindData(articles) {
 
     articles.forEach(article => {
         // If no image in article
-        if(!article.urlToImage) return;
+        if (!article.urlToImage) return;
         const cardClone = newsCardTemplate.content.cloneNode(true);
-        fillDataInCard(cardClone,article);
+        fillDataInCard(cardClone, article);
         cardsContainer.appendChild(cardClone);
     });
 }
 
-function fillDataInCard(cardClone,article) {
+function fillDataInCard(cardClone, article) {
     const newsImg = cardClone.querySelector("#news-img");
     const newsTitle = cardClone.querySelector("#news-title");
     const newsSource = cardClone.querySelector("#news-source");
@@ -47,8 +47,8 @@ function fillDataInCard(cardClone,article) {
         timeZone: "Asia/Jakarta",
     });
     newsSource.innerHTML = `${article.source.name} · ${date}`;
-    cardClone.firstElementChild.addEventListener("click",()=>{
-        window.open(`${article.url}`,"_blank");
+    cardClone.firstElementChild.addEventListener("click", () => {
+        window.open(`${article.url}`, "_blank");
     })
 }
 
@@ -64,11 +64,28 @@ function onNavItemClick(query) {
 const searchButton = document.getElementById("search-button");
 const searchText = document.getElementById("search-text");
 
-searchButton.addEventListener("click",()=>{
+searchButton.addEventListener("click", () => {
     const query = searchText.value;
-    if(!query) return;
+    if (!query) return;
     fetchNews(query);
     searchText.value = "";
     curSelectedNav?.classList.remove("active");
     curSelectedNav = null;
 })
+
+// scroll up code
+window.addEventListener('scroll', function () {
+    var button = document.getElementById('goUpButton');
+    if (window.scrollY > 0) {
+        button.style.display = 'block';
+    }
+    else {
+        button.style.display = 'none';
+    }
+});
+document.getElementById('goUpButton').addEventListener('click', function () {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
